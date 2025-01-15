@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to SparkHub</h1>
+    <p class="lead">Find your perfect match at IIT Bhubaneswar!</p>
+    <hr class="my-4">
+    <p>Sign up now to start connecting with other students.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('signup') }}" role="button">Sign Up</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('signin') }}" role="button">Sign In</a>
+</div>
+{% endblock %}
+
