@@ -1,0 +1,200 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Sign Up</h2>
+<form id="signup-form">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <div class="form-text">Use your IIT BBS email (example@iitbbs.ac.in)</div>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select class="form-select" id="gender" name="gender" required>
+            <option value="">Choose...</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="branch" class="form-label">Branch</label>
+        <input type="text" class="form-control" id="branch" name="branch" required>
+    </div>
+    <div class="mb-3">
+        <label for="year" class="form-label">Year</label>
+        <input type="number" class="form-control" id="year" name="year" min="1" max="5" required>
+    </div>
+    <div class="mb-3">
+        <label for="hobbies" class="form-label">Hobbies</label>
+        <input type="text" class="form-control" id="hobbies" name="hobbies">
+    </div>
+    <div class="mb-3">
+        <label for="bio" class="form-label">Bio</label>
+        <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="previous_relationships" class="form-label">Number of Previous Relationships</label>
+        <input type="number" class="form-control" id="previous_relationships" name="previous_relationships" min="0" required>
+    </div>
+    <div class="mb-3">
+        <label for="previous_dates" class="form-label">Number of Previous Dates</label>
+        <input type="number" class="form-control" id="previous_dates" name="previous_dates" min="0" required>
+    </div>
+    <div class="mb-3">
+        <label for="insta_id" class="form-label">Instagram ID</label>
+        <input type="text" class="form-control" id="insta_id" name="insta_id">
+    </div>
+    <div class="mb-3">
+        <label for="pet_preference" class="form-label">Dog lover, cat lover, or neither?</label>
+        <select class="form-select" id="pet_preference" name="pet_preference" required>
+            <option value="">Choose...</option>
+            <option value="dog">Dog lover</option>
+            <option value="cat">Cat lover</option>
+            <option value="neither">Neither</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="sleep_schedule" class="form-label">Night owl, morning person, or other?</label>
+        <select class="form-select" id="sleep_schedule" name="sleep_schedule" required>
+            <option value="">Choose...</option>
+            <option value="night_owl">Night owl</option>
+            <option value="morning_person">Morning person</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="life_approach" class="form-label">Going with the flow or having a goal?</label>
+        <select class="form-select" id="life_approach" name="life_approach" required>
+            <option value="">Choose...</option>
+            <option value="flow">Going with the flow</option>
+            <option value="goal">Having a goal</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="personality_type" class="form-label">Introvert, extrovert, or ambivert?</label>
+        <select class="form-select" id="personality_type" name="personality_type" required>
+            <option value="">Choose...</option>
+            <option value="introvert">Introvert</option>
+            <option value="extrovert">Extrovert</option>
+            <option value="ambivert">Ambivert</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="beverage_preference" class="form-label">Tea or coffee?</label>
+        <select class="form-select" id="beverage_preference" name="beverage_preference" required>
+            <option value="">Choose...</option>
+            <option value="tea">Tea</option>
+            <option value="coffee">Coffee</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="ideal_weekend" class="form-label">Ideal weekend: Relaxing, working for my motive, or other?</label>
+        <select class="form-select" id="ideal_weekend" name="ideal_weekend" required>
+            <option value="">Choose...</option>
+            <option value="relaxing">Relaxing</option>
+            <option value="working">Working for my motive</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="vacation_style" class="form-label">How do you vacation: Beach, city, wild, or staycation?</label>
+        <select class="form-select" id="vacation_style" name="vacation_style" required>
+            <option value="">Choose...</option>
+            <option value="beach">Beach</option>
+            <option value="city">City</option>
+            <option value="wild">Wild</option>
+            <option value="staycation">Staycation</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="music_taste" class="form-label">What's your music vibe: Pop, rock, indie, or eclectic?</label>
+        <select class="form-select" id="music_taste" name="music_taste" required>
+            <option value="">Choose...</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="indie">Indie</option>
+            <option value="eclectic">Eclectic</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="sunday_activity" class="form-label">Favorite way to spend Sunday: Relaxing, working for my motive, or other?</label>
+        <select class="form-select" id="sunday_activity" name="sunday_activity" required>
+            <option value="">Choose...</option>
+            <option value="relaxing">Relaxing</option>
+            <option value="working">Working for my motive</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="love_language" class="form-label">Love language: Words, time, service, touch, or gifts?</label>
+        <select class="form-select" id="love_language" name="love_language" required>
+            <option value="">Choose...</option>
+            <option value="words">Words</option>
+            <option value="time">Time</option>
+            <option value="service">Service</option>
+            <option value="touch">Touch</option>
+            <option value="gifts">Gifts</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="planning_style" class="form-label">Planner or spontaneous?</label>
+        <select class="form-select" id="planning_style" name="planning_style" required>
+            <option value="">Choose...</option>
+            <option value="planner">Planner</option>
+            <option value="spontaneous">Spontaneous</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="dream_date" class="form-label">Dream date: Dinner, activity, adventure, or surprise?</label>
+        <select class="form-select" id="dream_date" name="dream_date" required>
+            <option value="">Choose...</option>
+            <option value="dinner">Dinner</option>
+            <option value="activity">Activity</option>
+            <option value="adventure">Adventure</option>
+            <option value="surprise">Surprise</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="living_preference" class="form-label">Live in: City, countryside, beach, or mountains?</label>
+        <select class="form-select" id="living_preference" name="living_preference" required>
+            <option value="">Choose...</option>
+            <option value="city">City</option>
+            <option value="countryside">Countryside</option>
+            <option value="beach">Beach</option>
+            <option value="mountains">Mountains</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="communication_style" class="form-label">How do you communicate: Text, voice, call, or in-person?</label>
+        <select class="form-select" id="communication_style" name="communication_style" required>
+            <option value="">Choose...</option>
+            <option value="text">Text</option>
+            <option value="voice">Voice</option>
+            <option value="call">Call</option>
+            <option value="in-person">In-person</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="motivation_factor" class="form-label">What motivates you most: Growth, career, relationships, or impact?</label>
+        <select class="form-select" id="motivation_factor" name="motivation_factor" required>
+            <option value="">Choose...</option>
+            <option value="growth">Growth</option>
+            <option value="career">Career</option>
+            <option value="relationships">Relationships</option>
+            <option value="impact">Impact</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+{% endblock %}
+

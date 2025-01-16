@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron text-center">
+  <h1 class="display-4">Welcome to SparkHub</h1>
+  <p class="lead">Find your perfect match at IIT Bhubaneswar!</p>
+  <hr class="my-4">
+  <p>Sign up now to start connecting with other students.</p>
+  <a class="btn btn-primary btn-lg" href="{{ url_for('signup') }}" role="button">Sign Up</a>
+  <a class="btn btn-secondary btn-lg" href="{{ url_for('signin') }}" role="button">Sign In</a>
+</div>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="mb-4">Upcoming Events</h2>
+      <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Rose Day</h5>
+            <small>February 7</small>
+          </div>
+          <p class="mb-1">Express your love with a beautiful rose!</p>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Chocolate Day</h5>
+            <small>February 9</small>
+          </div>
+          <p class="mb-1">Sweeten your relationship with delicious chocolates!</p>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Valentine's Day</h5>
+            <small>February 14</small>
+          </div>
+          <p class="mb-1">Celebrate love with your special someone!</p>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <h2 class="mb-4">Date Suggestions</h2>
+      <div class="card-deck">
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Picnic at the Campus Lake</h5>
+            <p class="card-text">Enjoy a romantic picnic by the serene campus lake. Don't forget to bring some snacks and a cozy blanket!</p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Stargazing Night</h5>
+            <p class="card-text">Take advantage of the clear night skies at IIT Bhubaneswar. Bring a telescope or just lay back and enjoy the stars together.</p>
+          </div>
+        </div>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Campus Art Walk</h5>
+            <p class="card-text">Explore the beautiful artwork and sculptures around the campus. It's a great way to spark interesting conversations!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

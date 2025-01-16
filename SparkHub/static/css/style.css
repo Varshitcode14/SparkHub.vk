@@ -1,0 +1,66 @@
+body {
+  background-color: #FFE4E1;
+  color: #333;
+}
+
+.navbar {
+  background-color: #FF69B4;
+}
+
+.navbar-brand, .nav-link {
+  color: #fff !important;
+}
+
+.btn-primary {
+  background-color: #FF1493;
+  border-color: #FF1493;
+}
+
+.btn-primary:hover {
+  background-color: #FF69B4;
+  border-color: #FF69B4;
+}
+
+.card {
+  border-color: #FF69B4;
+}
+
+.jumbotron {
+  background-color: #FFC0CB;
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.3rem;
+}
+
+.list-group-item {
+  background-color: #FFF0F5;
+  border-color: #FF69B4;
+}
+
+.list-group-item:hover {
+  background-color: #FFB6C1;
+}
+
+.card-deck .card {
+  margin-bottom: 15px;
+}
+
+.card-title {
+  color: #FF1493;
+}
+
+@media (min-width: 576px) {
+  .card-deck {
+    display: flex;
+    flex-flow: row wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .card-deck .card {
+    flex: 1 0 0%;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}
+
