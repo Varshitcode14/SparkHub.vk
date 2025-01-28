@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Your Dates</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Sent Requests</h3>
+        <div class="sent-requests">
+        {% for request in sent_requests %}
+            <div class="card mb-3">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-4">
+                        {% if request.is_blind_date %}
+                            Date with Mystery User
+                        {% else %}
+                            Date with {{ request.receiver.name }}
+                        {% endif %}
+                    </h5>
+                    <div class="date-info">
+                        <p class="card-text mb-2"><strong>Date:</strong> {{ request.date }}</p>
+                        <p class="card-text mb-2"><strong>Time:</strong> {{ request.time }}</p>
+                        <p class="card-text mb-2"><strong>Place:</strong> {{ request.place }}</p>
+                        <p class="card-text mb-3">
+                            <strong>Status:</strong> 
+                            <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'accepted' %}bg-success{% elif request.status == 'denied' %}bg-danger{% elif request.status == 'altered' %}bg-info{% endif %}">
+                                {{ request.status }}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="actions mt-3">
+                        <button class="btn btn-info view-profile mb-2 w-100" 
+                                data-user-id="{{ request.receiver_id if request.sender_id == session['user_id'] else request.sender_id }}"
+                                data-is-blind="{{ 'true' if request.is_blind_date else 'false' }}">
+                            View Profile
+                        </button>
+                        {% if request.status == 'pending' or request.status == 'altered' %}
+                            <button class="btn btn-danger cancel-request w-100" data-request-id="{{ request.id }}">
+                                Cancel Request
+                            </button>
+                        {% endif %}
+                        {% if request.status == 'altered' %}
+                            <div class="mt-2 d-flex gap-2">
+                                <button class="btn btn-success flex-grow-1 accept-altered-request" data-request-id="{{ request.id }}">
+                                    Accept Changes
+                                </button>
+                                <button class="btn btn-warning flex-grow-1 alter-request" data-request-id="{{ request.id }}">
+                                    Suggest New Changes
+                                </button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    <div class="col-md-6">
+        <h3>Received Requests</h3>
+        <div class="received-requests">
+        {% for request in received_requests %}
+            <div class="card mb-3">
+                <div class="card-body p-4">
+                    <h5 class="card-title mb-4">
+                        {% if request.is_blind_date %}
+                            Date Request from Mystery User
+                        {% else %}
+                            Date Request from {{ request.sender.name }}
+                        {% endif %}
+                    </h5>
+                    <div class="date-info">
+                        <p class="card-text mb-2"><strong>Date:</strong> {{ request.date }}</p>
+                        <p class="card-text mb-2"><strong>Time:</strong> {{ request.time }}</p>
+                        <p class="card-text mb-2"><strong>Place:</strong> {{ request.place }}</p>
+                        <p class="card-text mb-3">
+                            <strong>Status:</strong> 
+                            <span class="badge {% if request.status == 'pending' %}bg-warning{% elif request.status == 'accepted' %}bg-success{% elif request.status == 'denied' %}bg-danger{% elif request.status == 'altered' %}bg-info{% endif %}">
+                                {{ request.status }}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="actions mt-3">
+                        <button class="btn btn-info view-profile mb-2 w-100" 
+                                data-user-id="{{ request.sender_id if request.sender_id == session['user_id'] else request.sender_id }}"
+                                data-is-blind="{{ 'true' if request.is_blind_date else 'false' }}">
+                            View Profile
+                        </button>
+                        {% if request.status == 'pending' %}
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-success accept-request" data-request-id="{{ request.id }}">
+                                    Accept
+                                </button>
+                                <button class="btn btn-danger deny-request" data-request-id="{{ request.id }}">
+                                    Deny
+                                </button>
+                                <button class="btn btn-warning alter-request" data-request-id="{{ request.id }}">
+                                    Suggest Changes
+                                </button>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- Profile Modal -->
+<div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="userProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="userProfileModalLabel">User Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="userProfileModalBody">
+          <!-- Profile details will be loaded here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Alter Request Modal -->
+  <div class="modal fade" id="alterRequestModal" tabindex="-1" aria-labelledby="alterRequestModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="alterRequestModalLabel">Suggest Changes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="alterRequestForm">
+            <input type="hidden" id="requestId" name="requestId">
+            <div class="mb-3">
+              <label for="newDate" class="form-label">New Date</label>
+              <input type="date" class="form-control" id="newDate" name="newDate" required>
+            </div>
+            <div class="mb-3">
+              <label for="newTime" class="form-label">New Time</label>
+              <input type="time" class="form-control" id="newTime" name="newTime" required>
+            </div>
+            <div class="mb-3">
+              <label for="newPlace" class="form-label">New Place</label>
+              <input type="text" class="form-control" id="newPlace" name="newPlace" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Changes</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

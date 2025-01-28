@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Date Requests</h2>
+
+<h3>Received Requests</h3>
+<div class="row">
+  {% for request in received_requests %}
+  <div class="col-md-4 mb-4">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="card-title">{% if request.is_blind %}From: Mystery User{% else %}From: {{ request.sender.name }}{% endif %}</h5>
+              <p class="card-text"><strong>Date:</strong> {{ request.date }}</p>
+              <p class="card-text"><strong>Time:</strong> {{ request.time }}</p>
+              <p class="card-text"><strong>Place:</strong> {{ request.place }}</p>
+              <p class="card-text"><strong>Status:</strong> {{ request.status }}</p>
+              {% if request.status == 'pending' %}
+              <button class="btn btn-success btn-sm accept-request" data-request-id="{{ request.id }}">Accept</button>
+              <button class="btn btn-danger btn-sm deny-request" data-request-id="{{ request.id }}">Deny</button>
+              <button class="btn btn-warning btn-sm change-request" data-request-id="{{ request.id }}">Suggest Change</button>
+              {% endif %}
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+<h3>Sent Requests</h3>
+<div class="row">
+  {% for request in sent_requests %}
+  <div class="col-md-4 mb-4">
+      <div class="card">
+          <div class="card-body">
+              <h5 class="card-title">{% if request.is_blind %}To: Mystery User{% else %}To: {{ request.receiver.name }}{% endif %}</h5>
+              <p class="card-text"><strong>Date:</strong> {{ request.date }}</p>
+              <p class="card-text"><strong>Time:</strong> {{ request.time }}</p>
+              <p class="card-text"><strong>Place:</strong> {{ request.place }}</p>
+              <p class="card-text"><strong>Status:</strong> {{ request.status }}</p>
+          </div>
+      </div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Change Request Modal -->
+<div class="modal fade" id="changeRequestModal" tabindex="-1" aria-labelledby="changeRequestModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="changeRequestModalLabel">Suggest Changes</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="changeRequestForm">
+                  <input type="hidden" id="requestId" name="requestId">
+                  <div class="mb-3">
+                      <label for="newDate" class="form-label">New Date</label>
+                      <input type="date" class="form-control" id="newDate" name="newDate" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="newTime" class="form-label">New Time</label>
+                      <input type="time" class="form-control" id="newTime" name="newTime" required>
+                  </div>
+                  <div class="mb-3">
+                      <label for="newPlace" class="form-label">New Place</label>
+                      <input type="text" class="form-control" id="newPlace" name="newPlace" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit Changes</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
