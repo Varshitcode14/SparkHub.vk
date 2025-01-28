@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Sign Up</h2>
+<form id="signup-form">
+    <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <div class="form-text">Use your IIT BBS email (example@iitbbs.ac.in)</div>
+    </div>
+    <div class="mb-3 position-relative">
+        <label for="password" class="form-label">Password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="password" name="password" required>
+            <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="mb-3 position-relative">
+        <label for="confirm-password" class="form-label">Confirm Password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
+            <button class="btn btn-outline-secondary toggle-password" type="button" data-target="confirm-password">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                </svg>
+            </button>
+        </div>
+        <div id="password-match-feedback" class="invalid-feedback" style="display: none;">
+            Passwords do not match.
+        </div>
+    </div>
+  <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required>
+  </div>
+  <div class="mb-3">
+      <label for="gender" class="form-label">Gender</label>
+      <select class="form-select" id="gender" name="gender" required>
+          <option value="">Choose...</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+      </select>
+  </div>
+  <div class="mb-3">
+      <label for="branch" class="form-label">Branch</label>
+      <input type="text" class="form-control" id="branch" name="branch" required>
+  </div>
+  <div class="mb-3">
+      <label for="year" class="form-label">Year</label>
+      <input type="number" class="form-control" id="year" name="year" min="1" max="5" required>
+  </div>
+  <div class="mb-3">
+      <label for="hobbies" class="form-label">Hobbies</label>
+      <input type="text" class="form-control" id="hobbies" name="hobbies">
+  </div>
+  <div class="mb-3">
+      <label for="bio" class="form-label">Bio</label>
+      <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
+  </div>
+  <div class="mb-3">
+      <label for="previous_relationships" class="form-label">Number of Previous Relationships</label>
+      <input type="number" class="form-control" id="previous_relationships" name="previous_relationships" min="0" required>
+  </div>
+  <div class="mb-3">
+      <label for="previous_dates" class="form-label">Number of Previous Dates</label>
+      <input type="number" class="form-control" id="previous_dates" name="previous_dates" min="0" required>
+  </div>
+  <div class="mb-3">
+      <label for="insta_id" class="form-label">Instagram ID</label>
+      <input type="text" class="form-control" id="insta_id" name="insta_id">
+  </div>
+  <div class="mb-3">
+      <label for="ideal_weekend" class="form-label">Ideal weekend:</label>
+      <select class="form-select" id="ideal_weekend" name="ideal_weekend" required>
+           <option value="">Choose...</option>
+           <option value="relaxing">Relaxing</option>
+           <option value="hang_out">Hang out with friends</option>
+           <option value="productive">Using productively in some way</option>
+           <option value="other">Other</option>
+       </select>
+  </div>
+  <div class="mb-3">
+      <label for="music_taste" class="form-label">What's your music vibe:</label>
+      <select class="form-select" id="music_taste" name="music_taste" required>
+           <option value="">Choose...</option>
+           <option value="pop">Pop</option>
+           <option value="rock">Rock</option>
+           <option value="indie">Indie</option>
+           <option value="eclectic">Eclectic</option>
+           <option value="mass">Mass songs</option>
+           <option value="other">Other</option>
+       </select>
+  </div>
+  <div class="mb-3">
+    <label for="sleep_schedule" class="form-label">Sleep Schedule</label>
+    <select class="form-select" id="sleep_schedule" name="sleep_schedule" required>
+        <option value="">Choose...</option>
+        <option value="night_owl">Night Owl</option>
+        <option value="morning_person">Morning Person</option>
+        <option value="other">Other</option>
+    </select>
+</div>
+
+<div class="mb-3">
+    <label for="aspirations" class="form-label">Your Aspirations</label>
+    <select class="form-select" id="aspirations" name="aspirations" required>
+        <option value="">Choose...</option>
+        <option value="core">Core</option>
+        <option value="non_core">Non-core</option>
+        <option value="left_to_god">Left to God</option>
+        <option value="something_else">Something else</option>
+    </select>
+</div>
+
+<!-- Assuming "Music Taste" field is before this point.  Adjust placement as needed based on your actual form -->
+<div class="mb-3">
+    <label for="dream_date" class="form-label">Dream Date</label>
+    <input type="text" class="form-control" id="dream_date" name="dream_date" placeholder="Describe your dream date">
+</div>
+  <div class="mb-3">
+      <label for="personality_type" class="form-label">Introvert, extrovert, or ambivert?</label>
+      <select class="form-select" id="personality_type" name="personality_type" required>
+          <option value="">Choose...</option>
+          <option value="introvert">Introvert</option>
+          <option value="extrovert">Extrovert</option>
+          <option value="ambivert">Ambivert</option>
+      </select>
+  </div>
+  
+  <div class="mb-3">
+      <label for="planning_style" class="form-label">Planner or spontaneous?</label>
+      <select class="form-select" id="planning_style" name="planning_style" required>
+          <option value="">Choose...</option>
+          <option value="planner">Planner</option>
+          <option value="spontaneous">Spontaneous</option>
+      </select>
+  </div>
+  
+  <div class="mb-3">
+      <label for="communication_style" class="form-label">How do you communicate: Text, voice, call, or in-person?</label>
+      <select class="form-select" id="communication_style" name="communication_style" required>
+          <option value="">Choose...</option>
+          <option value="text">Text</option>
+          <option value="voice">Voice</option>
+          <option value="call">Call</option>
+          <option value="in-person">In-person</option>
+      </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Favorite Sports:</label>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Badminton" id="sport_badminton" name="favorite_sports">
+                <label class="form-check-label" for="sport_badminton">Badminton</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Cricket" id="sport_cricket" name="favorite_sports">
+                <label class="form-check-label" for="sport_cricket">Cricket</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Football" id="sport_football" name="favorite_sports">
+                <label class="form-check-label" for="sport_football">Football</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Basketball" id="sport_basketball" name="favorite_sports">
+                <label class="form-check-label" for="sport_basketball">Basketball</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Volleyball" id="sport_volleyball" name="favorite_sports">
+                <label class="form-check-label" for="sport_volleyball">Volleyball</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Tennis" id="sport_tennis" name="favorite_sports">
+                <label class="form-check-label" for="sport_tennis">Tennis</label>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Table Tennis" id="sport_tabletennis" name="favorite_sports">
+                <label class="form-check-label" for="sport_tabletennis">Table Tennis</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Other" id="sport_other" name="favorite_sports">
+                <label class="form-check-label" for="sport_other">Other</label>
+            </div>
+        </div>
+    </div>
+</div>
+  <div class="mb-3">
+       <label class="form-label">Societies Present In:</label>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="FEBS" id="society_febs" name="societies">
+           <label class="form-check-label" for="society_febs">FEBS</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Neuromancers" id="society_neuromancers" name="societies">
+           <label class="form-check-label" for="society_neuromancers">Neuromancers</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Web'nd" id="society_webnd" name="societies">
+           <label class="form-check-label" for="society_webnd">Web'nd</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Nakshatra" id="society_nakshatra" name="societies">
+           <label class="form-check-label" for="society_nakshatra">Nakshatra</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="RISC" id="society_risc" name="societies">
+           <label class="form-check-label" for="society_risc">RISC</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Tensor" id="society_tensor" name="societies">
+           <label class="form-check-label" for="society_tensor">Tensor</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="D-Groovers" id="society_dgroovers" name="societies">
+           <label class="form-check-label" for="society_dgroovers">D-Groovers</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Aaroh" id="society_aaroh" name="societies">
+           <label class="form-check-label" for="society_aaroh">Aaroh</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Cinewave" id="society_cinewave" name="societies">
+           <label class="form-check-label" for="society_cinewave">Cinewave</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Clix" id="society_clix" name="societies">
+           <label class="form-check-label" for="society_clix">Clix</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Kalakriti" id="society_kalakriti" name="societies">
+           <label class="form-check-label" for="society_kalakriti">Kalakriti</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="None" id="society_none" name="societies">
+           <label class="form-check-label" for="society_none">None</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="checkbox" value="Others" id="society_others" name="societies">
+           <label class="form-check-label" for="society_others">Others</label>
+       </div>
+   </div>
+  <div class="mb-3">
+      <label for="leisure_activities" class="form-label">Things Done in Leisure Time</label>
+      <select class="form-select" id="leisure_activities" name="leisure_activities" required>
+          <option value="">Choose...</option>
+          <option value="no_leisure">No leisure time</option>
+          <option value="sleep">Sleep</option>
+          <option value="watch_entertainment">Watch unnecessary things (movies, web series)</option>
+          <option value="others">Others</option>
+      </select>
+  </div>
+  <div class="mb-3">
+      <label for="cgpa" class="form-label">CGPA (Optional)</label>
+      <input type="number" class="form-control" id="cgpa" name="cgpa" step="0.01" min="0" max="10">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
+<div id="password-mismatch-message" class="alert alert-danger mt-3" style="display: none;">
+    Passwords do not match. Please make sure both passwords are the same.
+</div>
+{% endblock %}
+
