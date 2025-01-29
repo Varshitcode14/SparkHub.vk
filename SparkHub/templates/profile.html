@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Your Profile</h2>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='uploads/' + user.image) if user.image else 'https://via.placeholder.com/150' }}" alt="{{ user.name }}" class="img-fluid rounded-circle mb-3">
+                <form id="image-upload-form" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload Profile Picture</label>
+                        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="card-title mb-0">Profile Information</h5>
+                    <button id="editProfileBtn" class="btn btn-primary">Edit Profile</button>
+                </div>
+                
+                <!-- View Mode -->
+                <div id="profileView">
+                    <p class="card-text"><strong>Name:</strong> {{ user.name }}</p>
+                    <p class="card-text"><strong>Email:</strong> {{ user.email }}</p>
+                    <p class="card-text"><strong>Gender:</strong> {{ user.gender }}</p>
+                    <p class="card-text"><strong>Branch:</strong> {{ user.branch }}</p>
+                    <p class="card-text"><strong>Year:</strong> {{ user.year }}</p>
+                    <p class="card-text"><strong>State:</strong> {{ user.state }}</p>
+                    <p class="card-text"><strong>Hobbies:</strong> {{ user.hobbies }}</p>
+                    <p class="card-text"><strong>Bio:</strong> {{ user.bio }}</p>
+                    <p class="card-text"><strong>Previous Relationships:</strong> {{ user.previous_relationships }}</p>
+                    <p class="card-text"><strong>Previous Dates:</strong> {{ user.previous_dates }}</p>
+                    <p class="card-text"><strong>Instagram ID:</strong> {{ user.insta_id }}</p>
+                    <p class="card-text"><strong>Ideal Weekend:</strong> {{ user.ideal_weekend }}</p>
+                    <p class="card-text"><strong>Music Taste:</strong> {{ user.music_taste }}</p>
+                    <p class="card-text"><strong>Dream Date:</strong> {{ user.dream_date if user.dream_date else 'Not specified' }}</p>
+                    <p class="card-text"><strong>Communication Style:</strong> {{ user.communication_style }}</p>
+                    <p class="card-text"><strong>Societies:</strong> {{ user.societies }}</p>
+                    <p class="card-text"><strong>Leisure Activities:</strong> {{ user.leisure_activities }}</p>
+                    <p class="card-text"><strong>Favorite Sports:</strong> {{ user.favorite_sports }}</p>
+                    <p class="card-text"><strong>Sleep Schedule:</strong> {{ user.sleep_schedule|title|replace('_', ' ') if user.sleep_schedule else 'Not specified' }}</p>
+                    <p class="card-text"><strong>Aspirations:</strong> {{ user.aspirations|title|replace('_', ' ') if user.aspirations else 'Not specified' }}</p>
+                    <p class="card-text"><strong>Personality Type:</strong> {{ user.personality_type|title|replace("_", " ") if user.personality_type else "Not specified" }}</p>
+                    <p class="card-text"><strong>Communication Style:</strong> {{ user.communication_style|title if user.communication_style else "Not specified" }}</p>
+                    {% if user.cgpa %}
+                    <p class="card-text"><strong>CGPA:</strong> {{ user.cgpa }}</p>
+                    {% endif %}
+                    <p class="card-text"><strong>Looking for:</strong> {{ user.relationship_looking_for|title|replace('_', ' ') if user.relationship_looking_for else 'Not specified' }}</p>
+                </div>
+
+                <!-- Edit Mode -->
+                <form id="profileEditForm" class="d-none">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" readonly>
+                        <small class="text-muted">Email cannot be changed</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio" class="form-label">Bio</label>
+                        <textarea class="form-control" id="bio" name="bio" rows="3">{{ user.bio }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="hobbies" class="form-label">Hobbies</label>
+                        <input type="text" class="form-control" id="hobbies" name="hobbies" value="{{ user.hobbies }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="insta_id" class="form-label">Instagram ID</label>
+                        <input type="text" class="form-control" id="insta_id" name="insta_id" value="{{ user.insta_id }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="ideal_weekend" class="form-label">Ideal Weekend</label>
+                        <select class="form-select" id="ideal_weekend" name="ideal_weekend">
+                            <option value="relaxing" {% if user.ideal_weekend == 'relaxing' %}selected{% endif %}>Relaxing</option>
+                            <option value="hang_out" {% if user.ideal_weekend == 'hang_out' %}selected{% endif %}>Hang out with friends</option>
+                            <option value="productive" {% if user.ideal_weekend == 'productive' %}selected{% endif %}>Using productively</option>
+                            <option value="other" {% if user.ideal_weekend == 'other' %}selected{% endif %}>Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="music_taste" class="form-label">Music Taste</label>
+                        <select class="form-select" id="music_taste" name="music_taste">
+                            <option value="pop" {% if user.music_taste == 'pop' %}selected{% endif %}>Pop</option>
+                            <option value="rock" {% if user.music_taste == 'rock' %}selected{% endif %}>Rock</option>
+                            <option value="indie" {% if user.music_taste == 'indie' %}selected{% endif %}>Indie</option>
+                            <option value="eclectic" {% if user.music_taste == 'eclectic' %}selected{% endif %}>Eclectic</option>
+                            <option value="mass" {% if user.music_taste == 'mass' %}selected{% endif %}>Mass songs</option>
+                            <option value="other" {% if user.music_taste == 'other' %}selected{% endif %}>Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dream_date" class="form-label">Dream Date</label>
+                        <input type="text" class="form-control" id="dream_date" name="dream_date" value="{{ user.dream_date }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="sleep_schedule" class="form-label">Sleep Schedule</label>
+                        <select class="form-select" id="sleep_schedule" name="sleep_schedule">
+                            <option value="night_owl" {% if user.sleep_schedule == 'night_owl' %}selected{% endif %}>Night Owl</option>
+                            <option value="morning_person" {% if user.sleep_schedule == 'morning_person' %}selected{% endif %}>Morning Person</option>
+                            <option value="other" {% if user.sleep_schedule == 'other' %}selected{% endif %}>Other</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="aspirations" class="form-label">Aspirations</label>
+                        <select class="form-select" id="aspirations" name="aspirations">
+                            <option value="core" {% if user.aspirations == 'core' %}selected{% endif %}>Core</option>
+                            <option value="non_core" {% if user.aspirations == 'non_core' %}selected{% endif %}>Non-core</option>
+                            <option value="left_to_god" {% if user.aspirations == 'left_to_god' %}selected{% endif %}>Left to God</option>
+                            <option value="something_else" {% if user.aspirations == 'something_else' %}selected{% endif %}>Something else</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="personality_type" class="form-label">Personality Type</label>
+                        <select class="form-select" id="personality_type" name="personality_type">
+                            <option value="">Choose...</option>
+                            <option value="introvert" {% if user.personality_type == 'introvert' %}selected{% endif %}>Introvert</option>
+                            <option value="extrovert" {% if user.personality_type == 'extrovert' %}selected{% endif %}>Extrovert</option>
+                            <option value="ambivert" {% if user.personality_type == 'ambivert' %}selected{% endif %}>Ambivert</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="communication_style" class="form-label">Communication Style</label>
+                        <select class="form-select" id="communication_style" name="communication_style">
+                            <option value="">Choose...</option>
+                            <option value="text" {% if user.communication_style == 'text' %}selected{% endif %}>Text</option>
+                            <option value="voice" {% if user.communication_style == 'voice' %}selected{% endif %}>Voice</option>
+                            <option value="call" {% if user.communication_style == 'call' %}selected{% endif %}>Call</option>
+                            <option value="in-person" {% if user.communication_style == 'in-person' %}selected{% endif %}>In-person</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="state" class="form-label">State</label>
+                        <input type="text" class="form-control" id="state" name="state" value="{{ user.state }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="cgpa" class="form-label">CGPA (Optional)</label>
+                        <input type="number" class="form-control" id="cgpa" name="cgpa" step="0.01" min="0" max="10" value="{{ user.cgpa }}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="relationship_looking_for" class="form-label">What kind of relationship are you looking for?</label>
+                        <select class="form-select" id="relationship_looking_for" name="relationship_looking_for">
+                            <option value="">Choose...</option>
+                            <option value="dating" {% if user.relationship_looking_for == 'dating' %}selected{% endif %}>For dating</option>
+                            <option value="already_in_relation" {% if user.relationship_looking_for == 'already_in_relation' %}selected{% endif %}>Already in a relationship (just viewing this website)</option>
+                            <option value="timepass" {% if user.relationship_looking_for == 'timepass' %}selected{% endif %}>Timepass (fling)</option>
+                            <option value="no_idea" {% if user.relationship_looking_for == 'no_idea' %}selected{% endif %}>No idea, let's see</option>
+                            <option value="serious" {% if user.relationship_looking_for == 'serious' %}selected{% endif %}>Looking for something serious</option>
+                        </select>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                        <button type="button" id="cancelEdit" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
