@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-md-6">
+          <div class="card mt-5">
+              <div class="card-body">
+                  <h2 class="card-title text-center mb-4">Verify Your Email</h2>
+                  <form id="verify-email-form">
+                      <div class="mb-3">
+                          <label for="email" class="form-label">Email address</label>
+                          <input type="email" class="form-control" id="email" name="email" required>
+                          <div class="form-text">Use your IIT BBS email (example@iitbbs.ac.in)</div>
+                      </div>
+                      <button type="submit" class="btn btn-primary w-100">Send OTP</button>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="otpModal" tabindex="-1" aria-labelledby="otpModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="otpModalLabel">Enter OTP</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="verify-otp-form">
+                  <input type="hidden" id="otp-email" name="email">
+                  <div class="mb-3">
+                      <label for="otp" class="form-label">Enter OTP</label>
+                      <input type="text" class="form-control" id="otp" name="otp" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+

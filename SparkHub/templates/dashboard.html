@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Welcome to DateHub.vk</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Browse Users</h5>
+                <p class="card-text">Discover potential matches and view their profiles.</p>
+                <a href="{{ url_for('users') }}" class="btn btn-primary">Browse Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Your Profile</h5>
+                <p class="card-text">View and edit your profile information.</p>
+                <a href="{{ url_for('profile') }}" class="btn btn-secondary">View Profile</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h3 class="mb-4">Top Love Confessions</h3>
+        {% for confession in top_confessions %}
+        <div class="card confession-card mb-3">
+            <div class="card-body">
+                <p class="card-text confession-content">{{ confession.content }}</p>
+                <div class="confession-footer">
+                    <small class="text-muted confession-meta">
+                        {% if confession.is_anonymous %}
+                            Posted anonymously
+                        {% else %}
+                            Posted by {{ confession.author }}
+                        {% endif %}
+                        • {{ confession.created_at.strftime('%Y-%m-%d %H:%M') }}
+                    </small>
+                    <div class="like-info">
+                        <i class="bi bi-heart-fill"></i>
+                        <span class="like-count">{{ confession.likes }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <a href="{{ url_for('confessions') }}" class="btn btn-primary">View All Love Confessions</a>
+    </div>
+</div>
+{% endblock %}
+
