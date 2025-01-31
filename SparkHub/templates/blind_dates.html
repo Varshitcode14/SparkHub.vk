@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Blind Dates</h2>
+
+<!-- Filter Options -->
+<div class="mb-4">
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#filterCollapse" aria-expanded="false" aria-controls="filterCollapse">
+      Filter Options
+  </button>
+  <div class="collapse" id="filterCollapse">
+    <div class="card card-body">
+        <form id="filter-form">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label for="filter-gender" class="form-label">Gender</label>
+                    <select class="form-select" id="filter-gender" name="gender">
+                        <option value="">Any</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-year" class="form-label">Year</label>
+                    <select class="form-select" id="filter-year" name="year">
+                        <option value="">Any</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
+                        <option value="5">5th Year</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-relationship-looking-for" class="form-label">Looking for</label>
+                    <select class="form-select" id="filter-relationship-looking-for" name="relationship_looking_for">
+                        <option value="">Any</option>
+                        <option value="dating">For dating</option>
+                        <option value="already_in_relation">Already in a relationship</option>
+                        <option value="timepass">Timepass (fling)</option>
+                        <option value="no_idea">No idea, let's see</option>
+                        <option value="serious">Looking for something serious</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-state" class="form-label">State</label>
+                    <select class="form-select" id="filter-state" name="state">
+                        <option value="">Any</option>
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madhya Pradesh">Madhya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Odisha">Odisha</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telangana">Telangana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="Uttarakhand">Uttarakhand</option>
+                        <option value="West Bengal">West Bengal</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-ideal-weekend" class="form-label">Ideal Weekend</label>
+                    <select class="form-select" id="filter-ideal-weekend" name="ideal_weekend">
+                        <option value="">Any</option>
+                        <option value="relaxing">Relaxing</option>
+                        <option value="hang_out">Hang out with friends</option>
+                        <option value="productive">Using productively</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-music-taste" class="form-label">Music Taste</label>
+                    <select class="form-select" id="filter-music-taste" name="music_taste">
+                        <option value="">Any</option>
+                        <option value="pop">Pop</option>
+                        <option value="rock">Rock</option>
+                        <option value="indie">Indie</option>
+                        <option value="eclectic">Eclectic</option>
+                        <option value="mass">Mass songs</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-sleep-schedule" class="form-label">Sleep Schedule</label>
+                    <select class="form-select" id="filter-sleep-schedule" name="sleep_schedule">
+                        <option value="">Any</option>
+                        <option value="night_owl">Night owl</option>
+                        <option value="morning_person">Morning person</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-leisure-activities" class="form-label">Leisure Activities</label>
+                    <select class="form-select" id="filter-leisure-activities" name="leisure_activities">
+                        <option value="">Any</option>
+                        <option value="no_leisure">No leisure time</option>
+                        <option value="sleep">Sleep</option>
+                        <option value="watch_entertainment">Watch unnecessary things</option>
+                        <option value="others">Others</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-aspirations" class="form-label">Aspirations</label>
+                    <select class="form-select" id="filter-aspirations" name="aspirations">
+                        <option value="">Any</option>
+                        <option value="core">Core</option>
+                        <option value="non_core">Non-core</option>
+                        <option value="left_to_god">Left to God</option>
+                        <option value="something_else">Something else</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-personality-type" class="form-label">Personality Type</label>
+                    <select class="form-select" id="filter-personality-type" name="personality_type">
+                        <option value="">Any</option>
+                        <option value="introvert">Introvert</option>
+                        <option value="extrovert">Extrovert</option>
+                        <option value="ambivert">Ambivert</option>
+                    </select>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="filter-communication-style" class="form-label">Communication Style</label>
+                    <select class="form-select" id="filter-communication-style" name="communication_style">
+                        <option value="">Any</option>
+                        <option value="text">Text</option>
+                        <option value="voice">Voice</option>
+                        <option value="call">Call</option>
+                        <option value="in-person">In-person</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Apply Filters</button>
+        </form>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="user-cards">
+    {% for user in users %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Mystery User</h5>
+                <p class="card-text"><strong>Year:</strong> {{ user.year }}</p>
+                <button class="btn btn-primary view-profile" data-user-id="{{ user.id }}" data-is-blind="true">View Full Profile</button>
+                <button class="btn btn-success mt-2 send-date-request" 
+                        data-user-id="{{ user.id }}"
+                        data-is-blind="true">
+                    Send Date Request
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<!-- Date Request Modal -->
+<div class="modal fade" id="dateRequestModal" tabindex="-1" aria-labelledby="dateRequestModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="dateRequestModalLabel">Send Date Request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="dateRequestForm">
+                    <input type="hidden" id="receiverId" name="receiverId">
+                    <input type="hidden" id="isBlindDate" name="isBlindDate" value="true">
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Date</label>
+                        <input type="date" class="form-control" id="date" name="date" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="time" class="form-label">Time</label>
+                        <input type="time" class="form-control" id="time" name="time" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="place" class="form-label">Place</label>
+                        <input type="text" class="form-control" id="place" name="place" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Modal -->
+<div class="modal fade" id="userProfileModal" tabindex="-1" aria-labelledby="userProfileModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="userProfileModalLabel">Mystery User Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="userProfileModalBody">
+        <!-- User profile details will be loaded here -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
