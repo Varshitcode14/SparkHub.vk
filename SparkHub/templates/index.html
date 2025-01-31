@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to DateHub.vk</h1>
+    <p class="lead">Find your perfect match at IIT Bhubaneswar!</p>
+    <hr class="my-4">
+    <p>Sign up now to start connecting with other students.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('verify_email') }}" role="button">Sign Up</a>
+    <a class="btn btn-secondary btn-lg" href="{{ url_for('signin') }}" role="button">Sign In</a>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="mb-4">Valentine's Week</h2>
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Rose Day</h5>
+                        <small>February 7th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Gift a rose and take a romantic walk in the campus garden.</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Propose Day</h5>
+                        <small>February 8th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Plan a special dinner and express your feelings.</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Chocolate Day</h5>
+                        <small>February 9th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Share your favorite chocolates and watch a movie together.</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Teddy Day</h5>
+                        <small>February 10th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Gift a cute teddy and have a picnic on the campus grounds.</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Promise Day</h5>
+                        <small>February 11th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Make promises over coffee at the campus cafe.</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Hug Day</h5>
+                        <small>February 12th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Surprise your partner with a warm hug and go for a nature walk.</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Kiss Day</h5>
+                        <small>February 13th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Plan a romantic evening under the stars on the campus terrace.</p>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">Valentine's Day</h5>
+                        <small>February 14th</small>
+                    </div>
+                    <p class="mb-1">Suggestion: Celebrate your love with a special dinner and exchange heartfelt gifts.</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+          <h2 class="mb-4">Top Love Confessions</h2>
+          {% for confession in top_confessions %}
+          <div class="card confession-card mb-3">
+              <div class="card-body">
+                  <p class="card-text confession-content">{{ confession.content }}</p>
+                  <div class="confession-footer">
+                      <small class="text-muted confession-meta">
+                          {% if confession.is_anonymous %}
+                              Posted anonymously
+                          {% else %}
+                              Posted by {{ confession.author }}
+                          {% endif %}
+                          • {{ confession.created_at.strftime('%Y-%m-%d %H:%M') }}
+                      </small>
+                      <div class="like-info">
+                          <i class="bi bi-heart-fill"></i>
+                          <span class="like-count">{{ confession.likes }}</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+          <a href="{{ url_for('confessions') }}" class="btn btn-primary">View All Love Confessions</a>
+      </div>
+    </div>
+</div>
+{% endblock %}
+
