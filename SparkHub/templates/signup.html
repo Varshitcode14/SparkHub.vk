@@ -1,0 +1,444 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 class="text-center mb-4">Complete Your Sign Up</h2>
+<form id="signup-form">
+    <input type="hidden" id="email" name="email" value="{{ email }}">
+    <div class="mb-3 position-relative">
+        <label for="password" class="form-label">Password(Cannot be changed later,so please note it)</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="password" name="password" required>
+            <button class="btn btn-outline-secondary toggle-password" type="button" data-target="password">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="mb-3 position-relative">
+        <label for="confirm-password" class="form-label">Confirm Password</label>
+        <div class="input-group">
+            <input type="password" class="form-control" id="confirm-password" name="confirm-password" required>
+            <button class="btn btn-outline-secondary toggle-password" type="button" data-target="confirm-password">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="bi bi-eye">
+                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0"/>
+                </svg>
+            </button>
+        </div>
+        <div id="password-match-feedback" class="invalid-feedback" style="display: none;">
+            Passwords do not match.
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+    </div>
+    <div class="mb-3">
+        <label for="gender" class="form-label">Gender (cannot be edited later)</label>
+        <select class="form-select" id="gender" name="gender" required>
+            <option value="">Choose...</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="branch" class="form-label">Branch</label>
+        <input type="text" class="form-control" id="branch" name="branch" required>
+    </div>
+    <div class="mb-3">
+        <label for="year" class="form-label">Year</label>
+        <input type="number" class="form-control" id="year" name="year" min="1" max="5" required>
+    </div>
+    <div class="mb-3">
+        <label for="state" class="form-label">State</label>
+        <select class="form-select" id="state" name="state" required>
+            <option value="">Choose...</option>
+            <option value="Andhra Pradesh">Andhra Pradesh</option>
+            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+            <option value="Assam">Assam</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Chhattisgarh">Chhattisgarh</option>
+            <option value="Goa">Goa</option>
+            <option value="Gujarat">Gujarat</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Manipur">Manipur</option>
+            <option value="Meghalaya">Meghalaya</option>
+            <option value="Mizoram">Mizoram</option>
+            <option value="Nagaland">Nagaland</option>
+            <option value="Odisha">Odisha</option>
+            <option value="Punjab">Punjab</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Telangana">Telangana</option>
+            <option value="Tripura">Tripura</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+            <option value="Uttarakhand">Uttarakhand</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+            <option value="Ladakh">Ladakh</option>
+            <option value="Lakshadweep">Lakshadweep</option>
+            <option value="Puducherry">Puducherry</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="hobbies" class="form-label">Hobbies</label>
+        <input type="text" class="form-control" id="hobbies" name="hobbies">
+    </div>
+    <div class="mb-3">
+        <label for="bio" class="form-label">Bio</label>
+        <textarea class="form-control" id="bio" name="bio" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="previous_relationships" class="form-label">Number of Previous Relationships</label>
+        <input type="number" class="form-control" id="previous_relationships" name="previous_relationships" min="0" required>
+    </div>
+    <div class="mb-3">
+        <label for="previous_dates" class="form-label">Number of Previous Dates</label>
+        <input type="number" class="form-control" id="previous_dates" name="previous_dates" min="0" required>
+    </div>
+    <div class="mb-3">
+        <label for="insta_id" class="form-label">Instagram ID</label>
+        <input type="text" class="form-control" id="insta_id" name="insta_id">
+    </div>
+    <div class="mb-3">
+        <label for="ideal_weekend" class="form-label">Ideal weekend:</label>
+        <select class="form-select" id="ideal_weekend" name="ideal_weekend" required>
+            <option value="">Choose...</option>
+            <option value="relaxing">Relaxing</option>
+            <option value="hang_out">Hang out with friends</option>
+            <option value="productive">Using productively in some way</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="music_taste" class="form-label">What's your music vibe:</label>
+        <select class="form-select" id="music_taste" name="music_taste" required>
+            <option value="">Choose...</option>
+            <option value="pop">Pop</option>
+            <option value="rock">Rock</option>
+            <option value="indie">Indie</option>
+            <option value="eclectic">Eclectic</option>
+            <option value="mass">Mass songs</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="sleep_schedule" class="form-label">Sleep Schedule</label>
+        <select class="form-select" id="sleep_schedule" name="sleep_schedule" required>
+            <option value="">Choose...</option>
+            <option value="night_owl">Night Owl</option>
+            <option value="morning_person">Morning Person</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="aspirations" class="form-label">Your Aspirations</label>
+        <select class="form-select" id="aspirations" name="aspirations" required>
+            <option value="">Choose...</option>
+            <option value="core">Core</option>
+            <option value="non_core">Non-core</option>
+            <option value="left_to_god">Left to God</option>
+            <option value="something_else">Something else</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="relationship_looking_for" class="form-label">What kind of relationship are you looking for?</label>
+        <select class="form-select" id="relationship_looking_for" name="relationship_looking_for" required>
+            <option value="">Choose...</option>
+            <option value="dating">For dating</option>
+            <option value="already_in_relation">Already in a relationship (just viewing this website)</option>
+            <option value="timepass">Timepass (fling)</option>
+            <option value="no_idea">No idea, let's see</option>
+            <option value="serious">Looking for something serious</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="dream_date" class="form-label">Dream Date</label>
+        <input type="text" class="form-control" id="dream_date" name="dream_date" placeholder="Describe your dream date">
+    </div>
+    <div class="mb-3">
+        <label for="personality_type" class="form-label">Introvert, extrovert, or ambivert?</label>
+        <select class="form-select" id="personality_type" name="personality_type" required>
+            <option value="">Choose...</option>
+            <option value="introvert">Introvert</option>
+            <option value="extrovert">Extrovert</option>
+            <option value="ambivert">Ambivert</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="planning_style" class="form-label">Planner or spontaneous?</label>
+        <select class="form-select" id="planning_style" name="planning_style" required>
+            <option value="">Choose...</option>
+            <option value="planner">Planner</option>
+            <option value="spontaneous">Spontaneous</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="communication_style" class="form-label">How do you communicate: Text, voice, call, or in-person?</label>
+        <select class="form-select" id="communication_style" name="communication_style" required>
+            <option value="">Choose...</option>
+            <option value="text">Text</option>
+            <option value="voice">Voice</option>
+            <option value="call">Call</option>
+            <option value="in-person">In-person</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Favorite Sports:</label>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Badminton" id="sport_badminton" name="favorite_sports">
+                    <label class="form-check-label" for="sport_badminton">Badminton</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Cricket" id="sport_cricket" name="favorite_sports">
+                    <label class="form-check-label" for="sport_cricket">Cricket</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Football" id="sport_football" name="favorite_sports">
+                    <label class="form-check-label" for="sport_football">Football</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Basketball" id="sport_basketball" name="favorite_sports">
+                    <label class="form-check-label" for="sport_basketball">Basketball</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Volleyball" id="sport_volleyball" name="favorite_sports">
+                    <label class="form-check-label" for="sport_volleyball">Volleyball</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Tennis" id="sport_tennis" name="favorite_sports">
+                    <label class="form-check-label" for="sport_tennis">Tennis</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Table Tennis" id="sport_tabletennis" name="favorite_sports">
+                    <label class="form-check-label" for="sport_tabletennis">Table Tennis</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Other" id="sport_other" name="favorite_sports">
+                    <label class="form-check-label" for="sport_other">Other</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Chess" id="sport_chess" name="favorite_sports">
+                    <label class="form-check-label" for="sport_chess">Chess</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Carrom" id="sport_carrom" name="favorite_sports">
+                    <label class="form-check-label" for="sport_carrom">Carrom</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Societies Present In:</label>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="FEBS" id="society_febs" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_febs">FEBS</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Neuromancers" id="society_neuromancers" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_neuromancers">Neuromancers</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Web'nd" id="society_webnd" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_webnd">Web'nd</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Nakshatra" id="society_nakshatra" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_nakshatra">Nakshatra</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="RISC" id="society_risc" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_risc">RISC</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Tensor" id="society_tensor" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_tensor">Tensor</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="D-Groovers" id="society_dgroovers" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_dgroovers">D-Groovers</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Aaroh" id="society_aaroh" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_aaroh">Aaroh</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Cinewave" id="society_cinewave" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_cinewave">Cinewave</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Clix" id="society_clix" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_clix">Clix</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Kalakriti" id="society_kalakriti" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_kalakriti">Kalakriti</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="The Fourth Wall" id="society_fourthwall" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_fourthwall">The Fourth Wall</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Panacea" id="society_panacea" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_panacea">Panacea</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Abhivyakti" id="society_abhivyakti" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_abhivyakti">Abhivyakti</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Quiz Society" id="society_quiz" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_quiz">Quiz Society</label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Souls for Solace" id="society_souls" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_souls">Souls for Solace</label>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Alumni" id="society_alumni" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_alumni">Alumni</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Oracle" id="society_oracle" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_oracle">Oracle</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="None" id="society_none_unique" name="societies">
+                    <label class="form-check-label" for="society_none_unique">None</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Others" id="society_others" name="societies" data-society-checkbox>
+                    <label class="form-check-label" for="society_others">Others</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="leisure_activities" class="form-label">Things Done in Leisure Time</label>
+        <select class="form-select" id="leisure_activities" name="leisure_activities" required>
+            <option value="">Choose...</option>
+            <option value="no_leisure">No leisure time</option>
+            <option value="sleep">Sleep</option>
+            <option value="watch_entertainment">Watch unnecessary things (movies, web series)</option>
+            <option value="others">Others</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="cgpa" class="form-label">CGPA (Optional)</label>
+        <input type="number" class="form-control" id="cgpa" name="cgpa" step="0.01" min="0" max="10">
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="acceptTerms" required>
+            <label class="form-check-label small" for="acceptTerms">
+                I have read and agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a>
+            </label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" id="signupButton" disabled>Complete Sign Up</button>
+</form>
+
+<!-- Terms and Conditions Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions - Data Usage</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="small">
+                    By using this website, you acknowledge and agree that the website may collect and store certain information, including personal details, uploaded images, and activity logs. This data will be accessible to the website admin to manage the platform, monitor functionality, and resolve technical issues. While every effort is made to secure your information, the website does not guarantee absolute privacy or security. Users are advised to exercise discretion when sharing sensitive information. The website admin will not intentionally share your data with third parties without your consent, but by using the website, you accept the risks associated with informal hosting.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const signupForm = document.getElementById("signup-form");
+    const acceptTermsCheckbox = document.getElementById("acceptTerms");
+    const signupButton = document.getElementById("signupButton");
+
+    acceptTermsCheckbox.addEventListener('change', function() {
+        signupButton.disabled = !this.checked;
+    });
+
+    signupForm.addEventListener("submit", function(e) {
+        e.preventDefault();
+        console.log("Form submitted"); // Debug log
+        if (!acceptTermsCheckbox.checked) {
+            alert("You must accept the Terms and Conditions to sign up.");
+            return;
+        }
+        
+        const formData = new FormData(this);
+        console.log("Form data:", Object.fromEntries(formData)); // Debug log
+        fetch('/signup', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            console.log("Response status:", response.status); // Debug log
+            return response.json();
+        })
+        .then(data => {
+            console.log("Response data:", data); // Debug log
+            if (data.error) {
+                alert(data.error);
+            } else {
+                alert(data.message);
+                window.location.href = data.redirect;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    });
+});
+</script>
+
